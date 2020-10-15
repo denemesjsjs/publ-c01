@@ -57,7 +57,7 @@ let embed2 = new Discord.RichEmbed()
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
 • **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şu an** ${message.guild.members.size} ** kişi **
+• **Sunucumuz şu an** \` ${message.guild.members.size} \`** kişi **
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 • **{ ${message.author} } Toplam kayıt sayısı =**  \` ${toplam} \` 
 `)
@@ -73,7 +73,7 @@ let embed3 = new Discord.RichEmbed()
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
 • **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şu an** \` ${message.guild.members.size} \`** kişi **
+• **Sunucumuz şu an**  \` ${message.guild.members.size} \`** kişi **
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')

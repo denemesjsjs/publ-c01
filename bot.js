@@ -154,19 +154,23 @@ if (tarih > 1196000000) kontrol = ' __**Kullanıcı Güvenli Değil**__ '
   moment.locale("tr");
   let kanal1 = client.channels.get(kanal);
     let giris = new Discord.RichEmbed()
-   .setTitle(` <a:kraltac:740610303628279808>   \` Sunucuya Bir Üye Katıldı!\` `)
+   .setTitle(`<a:kraltac:740610303628279808> | \`Sunucuya Bir Üye Katıldı!\` | <a:kraltac:740610303628279808>`)
     .setDescription(`
-• ** Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz. **
+• ** __Hoşgeldin! ${member}__ **
 
-• ** Tagımızı alarak ekibimize katılabilirsin. **
+•  **__Seninle Birlikte ${member.guild.memberCount} Kişiyiz.__ **
 
-• ** <@&${ayarlar.yetkiliROL}> seninle ilgilenicektir. **
+• \`{ ${ayarlar.tag} }\`** __Tagımızı alarak ekibimize katılabilirsin.__ **
 
-• ** Hesabın Oluşturulma Tarihi:** \` ${moment(member.user.createdAt).format("YYYY DD MMMM dddd (hh:mm:ss)")} \`
+• ** <@&${ayarlar.yetkiliROL}> __seninle ilgilenicektir.__ **
+
+• ** __Hesabın Oluşturulma Tarihi:__** \n \` ${moment(member.user.createdAt).format("YYYY DD MMMM dddd (hh:mm:ss)")} \`
 
 •  ${kontrol} 
 
-• ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __ ** `)
+• ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __ ** 
+
+`)
     .setThumbnail(member.user.avatarURL || 'https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setImage('https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setTimestamp()
