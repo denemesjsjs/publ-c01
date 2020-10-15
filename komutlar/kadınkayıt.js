@@ -20,8 +20,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.roles.has(yetkiliROL)) return;
   if(kullanıcı.bot) return
   db.add(`toplamkayit_${message.author.id}_${message.guild.id}`, 1)
-  if(!args[0]) return message.reply(`Kayıt Olacak Kişiyi Etiketlemelisin`)
-  if(!kullanıcı) return message.reply(`${args[0]} Adlı Kişi Sunucuda Bulunmuyor`)
+  if(!kullanıcı) return message.reply(`Kayıt Olacak Kullanıcıyı Etiketlemelisin.`)
   if(!isim) return message.reply(`${args[0]}, Adlı Kullanıcının İsmini Belirtmelisin.`)
   if(isim.length > 10) return message.reply(`Belirttiğiniz İsim 10 Harfi Geçmemeli.`)
    if(!yaş) return message.reply(`${args[0]}, Adlı Kullanıcının Yaşını Belirtmelisin.`)
@@ -48,11 +47,11 @@ message.guild.members.get(kullanıcı.id).send(emb.setDescription(`• Kaydın b
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['k'],
+  aliases: ['kk'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'kadın',
+  name: 'kk',
   description : 'Kadın Kayıt '
 };

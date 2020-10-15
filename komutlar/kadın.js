@@ -1,18 +1,17 @@
 const Discord = require("discord.js");
 const db = require('quick.db');
-
+const ayarlar = require('../ayarlar.json')
 /*->  Coded by. Chimp \n Edited by. Thunz  <-*/
 
 exports.run = async (client, message, args) => {
 
-    let role = message.guild.roles.get(``)// Kadın rol id
-    let kayitsiz = message.guild.roles.get(``)// Kayıtsız rol id
-    let kayitci = message.guild.roles.get(``)// Kayıtcı rol id
-    let channel = message.guild.channels.get(``) || message.channel// Log kanal id girin, boş bırakırsanız komutun kullanıldığı kanala logu yollar.
+    let kadınROL = ayarlar.kadınROL
+    let kayıtsızROL = ayarlar.kayıtsızROL
+    let yetkiliROL = ayarlar.yetkiliROL
+    let log = message.guild.channels.get(``) || message.channel// Log kanal id girin, boş bırakırsanız komutun kullanıldığı kanala logu yollar.
 
-    if(!message.member.hasPermission(`ADMINISTRATOR`)) return;
-// Sadece role sahip olanlar kullansın istiyorsanız 14. satır yerine:
-// if(!message.member.roles.has(kayitci)) return;
+    if(!message.member.roles.has(yetkiliROL)) return;
+
   
 if(!args[0]) return message.channel.send(`Bir kişiyi etiketlemelisin.`)
   
@@ -36,22 +35,19 @@ const emb = new Discord.RichEmbed()
 .setFooter(`#${message.channel.name} Kanalında Kullanıldı.`)
 
 message.guild.members.get(kullanıcı.id).setNickname(`${isim} | ${yaş}`)
-message.guild.members.get(kullanıcı.id).addRole(role.id)
-message.guild.members.get(kullanıcı.id).removeRole(kayitsiz.id)
-message.guild.members.get(kullanıcı.id).send(emb.setDescription(`**${message.guild.name}** sunucusunda ${message.author} tarafından ${isim} | ${yaş} olarak kayıt edildin.`))
-
-channel.send(
-emb.setDescription(`${kullanıcı}, kullanıcısı kayıt edildi.`)
-.addField(`Kayıt eden:`, message.author, true)
-.addField(`Yeni ismi:`, args[1], true)
-.addField(`Yeni yaşı:`, args[2], true)
-.addField(`Verilen rol:`, role.name, true)
-.addField(`Alınan rol:`, kayitsiz.name, true))
+message.guild.members.get(kullanıcı.id).addRole(kadınROL.id)
+message.guild.members.get(kullanıcı.id).removeRole(kayıtsızROL.id)
+message.guild.members.get(kullanıcı.id).send(emb.setDescription(`• Kaydın başarıyla ${message.author} tarafından yapıldı. \n • Sunucudaki İsmin : ${isim} • ${yaş} `))
+let embed2 = new Discord.RichEmbed()
+.setDescription(`${kullanıcı}, Adlı Kullanıcı Başarıyla Kayıt Oldu.`)
+.addField(`• Kayıt eden:`, message.author, true)
+.addField(`• İsim Yaş:`, args[1] | args[2]``, true)
+.addField(`• Verilen Rol:`, kadınROL.name, true)
+.setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
+log.send(embed2)
   
 message.reply(`Kayıt işlemi başarılı \n Kayıt türü: ** KADIN **`)
 
-// Çok isterseniz botun yolladığı mesaja tepki ekleyebilirsiniz.
-// .then(m => m.react(``))
 
 }
 
