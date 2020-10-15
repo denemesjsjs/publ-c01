@@ -60,10 +60,22 @@ let embed2 = new Discord.RichEmbed()
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
+
+
 db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
 kayıtLOG.send(embed2)
-  
-message.channel.send(embed2)
+let embed3 = new Discord.RichEmbed()
+.setTitle(`• Kayıt Başarıyla Tamamlandı!.`)
+.setDescription(`
+• **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
+• **İsim Yaş:** \` ${isim} | ${yaş} \`
+• **Verilen Rol:** ${kadınROL} \`  { ${kadınROL.id} }  \` 
+• **Bu Hesap:** \`  { ${kontrol} }  \` 
+• **Sunucumuz şuan ${message.guild.member.size}
+• **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
+`)
+.setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
+message.channel.send(embed3)
 
 
 }
