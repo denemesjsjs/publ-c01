@@ -30,12 +30,12 @@ if (kurulus > 1296000000) kontrol = 'Güvenli'
   
   
 let isim = args[1];
-if(!isim) return message.channel.send(`Üyenin ismini belirtmelisin.`)
+if(!isim) return message.channel.send(`${args[0]}, için bir isim girmelisin.`)
 if(isim.length > 16) return message.channel.send(`Daha kısa bir isim yaz.`)
 
 let yaş = args[2];
-if(!yaş) return message.channel.send(`Üyenin yaşını belirtmelisin.`)
-if(yaş.length > 100) return message.channel.send(`Üyenin yaşı 100'den büyük olamaz.`)
+if(!yaş) return message.channel.send(`${args[0]}, için bir isim gir.`)
+if(yaş.length > 2) return message.channel.send(`Adam 100 yaşında değil ya?`)
   
 const emb = new Discord.RichEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)
