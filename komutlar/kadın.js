@@ -13,12 +13,21 @@ exports.run = async (client, message, args) => {
 
     if(!message.member.roles.has(yetkili)) return message.channel.send('Bu işlemi sadece yetkililer yapabilir')
 
-  
+
 if(!args[0]) return message.channel.send(`Bir kişiyi etiketlemelisin.`)
   
 let kullanıcı = message.mentions.users.first()
 if(!kullanıcı) return message.channel.send(`${args[0]}, kullanıcısını sunucuda bulamıyorum.`)
 if(kullanıcı.bot) return;
+  
+  
+  
+  const kurulus = new Date().getTime() - kullanıcı.createdAt.getTime();  
+   var kontrol;
+if (kurulus < 1296000000) kontrol = 'Şüpheli'
+if (kurulus > 1296000000) kontrol = 'Güvenli'
+  
+  
   
 let isim = args[1];
 if(!isim) return message.channel.send(`${args[0]}, için bir isim girmelisin.`)
@@ -41,10 +50,18 @@ message.guild.members.get(kullanıcı.id).addRole(kadınROL.id)
 message.guild.members.get(kullanıcı.id).removeRole(kayıtsızROL.id)
 message.guild.members.get(kullanıcı.id).send(emb.setDescription(`• Kaydın başarıyla ${message.author} tarafından yapıldı. \n • Sunucudaki İsmin : ${isim} • ${yaş} `))
 let embed2 = new Discord.RichEmbed()
-.setDescription(`${kullanıcı}, Adlı Kullanıcı Başarıyla Kayıt Oldu.`)
-.addField(`• Kayıt eden:`, message.author)
-.addField(`• İsim Yaş: ${isim} | ${yaş}`)
-.addField(`• Verilen Rol:`, kadınROL.name)
+.setTitle(`• Bir Kullanıcı Kayıt Oldu.`)
+.setDescription(`
+• **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
+• 
+• **İsim Yaş:** \` ${isim} | ${yaş} \`
+• 
+• **Verilen Rol:** ${kadınROL} \`  { ${kadınROL.id} }  \` 
+• 
+• **Bu Hesap:** \`  { ${kontrol} }  \` 
+• 
+• **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
+`)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
 db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
 channel.send(embed2)
