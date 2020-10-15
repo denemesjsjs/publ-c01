@@ -169,12 +169,12 @@ client.on("userUpdate", async (oldUser, newUser) => {
   const embed = new Discord.RichEmbed()
  
   var kontrol;
-if (tarih < 1296000000) kontrol = ' **__Bu Hesap Güvenilir Değil__** '
-if (tarih > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
+if (tarih < 1196000000) kontrol = ' **__Kullanıcı Güvenli__** '
+if (tarih > 1196000000) kontrol = ' **__Kullanıcı Güvenli Değil__** '
   moment.locale("tr");
-  let buse = client.channels.get(kanal);
+  let kanal1 = client.channels.get(kanal);
     let giris = new Discord.RichEmbed()
-   
+   .setTitle(` \` Sunucumuza Hoşgeldin!\` `)
     .setDescription(`
 • ** Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz. **
 
@@ -182,13 +182,13 @@ if (tarih > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
 
 • ** <@&${ayarlar.yetkiliROL}> seninle ilgilenicektir. **
 
-• ** Hesabın Oluşturulma Tarihi:** ${moment(member.user.createdAt).format(" **YYYY __DD MMMM dddd (hh:mm:ss) __ **")} **
+• ** Hesabın Oluşturulma Tarihi:** \` ${moment(member.user.createdAt).format(" **YYYY __DD MMMM dddd (hh:mm:ss) __ **")} \`
 
 • ** ${kontrol} **
 
 • ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __  `)
-    .setThumbnail(member.user.avatarURL)
+    .setThumbnail(member.user.avatarURL || 'https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setImage('https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setTimestamp()
-buse.send(giris)
+kanal1.send(giris)
   });
