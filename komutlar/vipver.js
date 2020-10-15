@@ -1,24 +1,23 @@
 const Discord = require('discord.js');
-const ayarlar = require('../ayarlar.json')
+
 exports.run = function(client, message, args) {
-  let dena = message.mentions.members.first
+  let dena = message.guild.members.get(args[0]);
   if(!message.member.hasPermission('ADMINISTRATOR')) return
-  
-  var role = message.guild.roles.find(role => role.id === ayarlar.vipROL); 
-  await(member.addRole(member.guild.roles.get(otorol).id)) 
+  var role = message.guild.roles.find(role => role.id === "766372335959015424"); 
   dena.addRole(role);
-  message.channel.send(`Vip rolü başarıyla verildi`);
+  message.channel.send(`Abone rolü başarıyla verildi`);
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['vip'],
+  aliases: ['abone.js','abone'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'vipver',
-
+  name: 'abone',
+  description: 'JavaScript kanallarına erişim sağlar.',
+  usage: 'abone'
 };
-
+//codare
