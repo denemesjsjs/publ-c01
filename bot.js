@@ -174,11 +174,11 @@ if (tarih > 1196000000) kontrol = ' __**Kullanıcı Güvenli Değil**__ '
   moment.locale("tr");
   let kanal1 = client.channels.get(kanal);
     let giris = new Discord.RichEmbed()
-   .setTitle(` <a:kraltac:740610303628279808>   \` Sunucumuza Hoşgeldin!\` `)
+   .setTitle(` <a:kraltac:740610303628279808>   \` Sunucuya Bir Üye Katıldı!\` `)
     .setDescription(`
 • ** Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz. **
 
-• ** Sunucuya Hoşgeldin Tagımızı Alarak Kayıt Olabilirsin. **
+• ** Tagımızı alarak ekibimize katılabilirsin. **
 
 • ** <@&${ayarlar.yetkiliROL}> seninle ilgilenicektir. **
 
