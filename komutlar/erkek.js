@@ -5,7 +5,7 @@ const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, message, args) => {
 
-    let kadınROL = ayarlar.kadınROL 
+    let erkekROL = ayarlar.erkekROL 
     let kayıtsızROL = ayarlar.kayıtsızROL
     let kayıtlıROL = ayarlar.kayıtlıROL
     let yetkili = ayarlar.yetkiliROL
@@ -30,12 +30,12 @@ if (kurulus > 1296000000) kontrol = 'Güvenli'
   
   
 let isim = args[1];
-if(!isim) return message.channel.send(`${args[0]}, için bir isim girmelisin.`)
+if(!isim) return message.channel.send(`Üyenin ismini belirtmelisin.`)
 if(isim.length > 16) return message.channel.send(`Daha kısa bir isim yaz.`)
 
 let yaş = args[2];
-if(!yaş) return message.channel.send(`${args[0]}, için bir isim gir.`)
-if(yaş.length > 2) return message.channel.send(`Adam 100 yaşında değil ya?`)
+if(!yaş) return message.channel.send(`Üyenin yaşını belirtmelisin.`)
+if(yaş.length > 100) return message.channel.send(`Üyenin yaşı 100'den büyük olamaz.`)
   
 const emb = new Discord.RichEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)
@@ -43,9 +43,9 @@ const emb = new Discord.RichEmbed()
 .setTimestamp()
 .setColor(`#fffff0`)
 .setFooter(`#${message.channel.name} Kanalında Kullanıldı.`)
-
+let toplam = db.fetch(`kayitsayisi_${message.author.id}_${message.guild.id}`)
 message.guild.members.get(kullanıcı.id).setNickname(`${isim} • ${yaş}`)
-message.guild.members.get(kullanıcı.id).addRole(kadınROL.id)
+message.guild.members.get(kullanıcı.id).addRole(erkekROL.id)
   message.guild.members.get(kullanıcı.id).addRole(kayıtlıROL.id)
 message.guild.members.get(kullanıcı.id).removeRole(kayıtsızROL.id)
 message.guild.members.get(kullanıcı.id).send(emb.setDescription(`• Kaydın başarıyla ${message.author} tarafından yapıldı. \n • Sunucudaki İsmin : ${isim} • ${yaş} `))
@@ -54,10 +54,11 @@ let embed2 = new Discord.RichEmbed()
 .setDescription(`
 • **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
-• **Verilen Rol:** ${kadınROL} \`  { ${kadınROL.id} }  \` 
+• **Verilen Rol:** <@&${erkekROL}> \`  { ${erkekROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şuan ${message.guild.member.size}
+• **Sunucumuz şuan** ${message.guild.member.size}
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
+• **{ ${message.author} }Toplam kayıt sayısı =**  \` ${toplam} \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
 
@@ -69,7 +70,7 @@ let embed3 = new Discord.RichEmbed()
 .setDescription(`
 • **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
-• **Verilen Rol:** ${kadınROL} \`  { ${kadınROL.id} }  \` 
+• **Verilen Rol:** <@&${erkekROL}> \`  { ${erkekROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
 • **Sunucumuz şuan ${message.guild.member.size}
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
