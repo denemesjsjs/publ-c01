@@ -5,11 +5,11 @@ const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, message, args) => {
 
-    let kadınROL = ayarlar.kadınROL 
-    let kayıtsızROL = ayarlar.kayıtsızROL
-    let kayıtlıROL = ayarlar.kayıtlıROL
+    let kadınROL = message.guild.roles.get(`766264849004101642`)// Kadın rol id
+    let kayıtsızROL = message.guild.roles.get(`762283600929357835`)
+    let kayıtlıROL = message.guild.roles.get(`766264850233032734`)// Kayıtsız rol id
     let yetkili = ayarlar.yetkiliROL
-    let kayıtLOG = ayarlar.kayıtLOG
+    let channel = message.guild.channels.get(`766264831346343976`) || message.channel// Log kanal id girin, boş bırakırsanız komutun kullanıldığı kanala logu yollar.
 
     if(!message.member.roles.has(yetkili)) return message.channel.send('Bu işlemi sadece yetkililer yapabilir')
 
@@ -61,7 +61,7 @@ let embed2 = new Discord.RichEmbed()
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
 db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
-kayıtLOG.send(embed2)
+channel.send(embed2)
   
 message.reply(`Kayıt işlemi başarılı \n Kayıt türü: ** KADIN **`)
 

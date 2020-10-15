@@ -135,13 +135,8 @@ client.on("message", (message, member) => {
 
 client.on("guildMemberAdd", async(member) => {
   let otorol = ayarlar.kayıtsızROL
-  let otorolkanal = ayarlar.kayıtsızROLLOG
   if(!otorol) return
   await(member.addRole(member.guild.roles.get(otorol).id)) 
-  if(otorolkanal && client.channels.has(otorolkanal)) {
-    await client.channels.get(otorolkanal).send(`:inbox_tray:  \`${member.user.tag}\`  **adlı kullanıcıya kayıtsız rolü verildi. **`)
-    
-  };
 });
 
 /// kayıtsız rolü son
