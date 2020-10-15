@@ -136,7 +136,9 @@ client.on("message", (message, member) => {
 client.on("guildMemberAdd", async(member) => {
   let otorol = ayarlar.kayıtsızROL
   if(!otorol) return
+  let kanal = ayarlar.kayıtsızROLLOG
   await(member.addRole(member.guild.roles.get(otorol).id)) 
+  kanal.send(`• ${member} • adlı kullanıcıya kayıtsız rolü verildi.`)
 });
 
 /// kayıtsız rolü son
@@ -161,7 +163,6 @@ client.on("userUpdate", async (oldUser, newUser) => {
 
   client.on("guildMemberAdd", member => { 
     const moment = require('moment');
-  const emoji = client.emojis.get('754989058513698937');
   const kanal = ayarlar.giriskanal;
   let user = client.users.get(member.id);
   require("moment-duration-format");
