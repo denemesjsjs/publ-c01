@@ -9,6 +9,9 @@ exports.run = async (client, message, args) => {
   let yaş = args[2]
   let isimlog = ayarlar.isimLOG
   let yetkili = message.author;
+   let log = message.guild.channels.find( channel => channel.id === ayarlar.isimLOG);
+  
+  
   
   if(!uye) return message.channel.send(`İsmi değiştirilecek üyeyi belirtin.`)
   if(!yaş) return message.channel.send(`Üyenin yaşını yazın.`)
@@ -18,9 +21,9 @@ exports.run = async (client, message, args) => {
   message.guild.members.get(uye.id).setNickname(`${isim} • ${yaş}`)
   message.channel.send(`\`${uye.username}\`'in ismi başarıyla  \` ${isim} • ${yaş} \` olarak değiştirildi.`)
   let embed2 = new Discord.RichEmbed()
-  .setDescription(`Yetkili : ${yetkili}`)
-  .addField(`\`${uye.username}\`'in ismi \` ${isim} • ${yaş} \` olarak değiştirildi.`)
-  client.guild.channels.find(isimlog).send(embed2)
+  .setTitle(`• \`${uye.username}\`'in ismi \` { ${isim} • ${yaş} }\` olarak değiştirildi.`)
+  .setDescription(`• **\`Yetkili\`** ${yetkili} `)
+log.send(embed2)
 }
 exports.conf = {
     enabled: true,
