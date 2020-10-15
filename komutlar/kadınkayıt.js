@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
    
   if (!message.member.roles.has(yetkiliROL)) return;
   if(kullanıcı.bot) return
- // db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
+  db.add(`toplamkayit_${message.author.id}_${message.guild.id}`, 1)
   if(!args[0]) return message.reply(`Kayıt Olacak Kişiyi Etiketlemelisin`)
   if(!kullanıcı) return message.reply(`${args[0]} Adlı Kişi Sunucuda Bulunmuyor`)
   if(!isim) return message.reply(`${args[0]}, Adlı Kullanıcının İsmini Belirtmelisin.`)
