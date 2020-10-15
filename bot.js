@@ -145,3 +145,22 @@ client.on("guildMemberAdd", async(member) => {
 });
 
 /// kayıtsız rolü son
+
+
+client.on("userUpdate", async (oldUser, newUser) => {
+  if (oldUser.username !== newUser.username) {
+    let tag = "JAU"; //tagınız
+    let sunucu = "720644892338028604"; //sunucu ID
+    let kanal = "766289274080460801" //log kanal id
+    let rol = "766264956089663508"; // rol ID
+    if (newUser.username.includes(tag) && !client.guilds.get(sunucu).members.get(newUser.id).roles.has(rol)) {
+      client.channels.get(kanal).send(`${newUser} ${tag} tagını aldığı için <@&${rol}> rolünü kazandı!`)
+      client.guilds.get(sunucu).members.get(newUser.id).addRole(rol)
+    } if (!newUser.username.includes(tag) && client.guilds.get(sunucu).members.get(newUser.id).roles.has(rol)) {
+      client.guilds.get(sunucu).members.get(newUser.id).removeRole(rol)
+      client.channels.get(kanal).send(`${newUser} ${tag} tagını çıkardığı için <@&${rol}> rolünü kaybetti!`)
+    }
+
+  }
+})
+
