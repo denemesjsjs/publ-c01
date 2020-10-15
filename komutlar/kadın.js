@@ -5,12 +5,13 @@ const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, message, args) => {
 
-    let kadınROL = ayarlar.kadınROL
-    let kayıtsızROL = ayarlar.kayıtsızROL
-    let yetkiliROL = ayarlar.yetkiliROL
-    let log = message.guild.channels.get(``) || message.channel// Log kanal id girin, boş bırakırsanız komutun kullanıldığı kanala logu yollar.
+    let kadınROL = message.guild.roles.get(`766264849004101642`)// Kadın rol id
+    let kayıtsızROL = message.guild.roles.get(`762283600929357835`)
+    let kayıtlıROL = message.guild.roles.get(`766264850233032734`)// Kayıtsız rol id
+    let yetkili = ayarlar.yetkiliROL
+    let channel = message.guild.channels.get(`766264831346343976`) || message.channel// Log kanal id girin, boş bırakırsanız komutun kullanıldığı kanala logu yollar.
 
-    if(!message.member.roles.has(yetkiliROL)) return;
+    if(!message.member.roles.has(yetkili)) return message.channel.send('Bu işlemi sadece yetkililer yapabilir')
 
   
 if(!args[0]) return message.channel.send(`Bir kişiyi etiketlemelisin.`)
@@ -34,17 +35,19 @@ const emb = new Discord.RichEmbed()
 .setColor(`#fffff0`)
 .setFooter(`#${message.channel.name} Kanalında Kullanıldı.`)
 
-message.guild.members.get(kullanıcı.id).setNickname(`${isim} | ${yaş}`)
+message.guild.members.get(kullanıcı.id).setNickname(`${isim} • ${yaş}`)
 message.guild.members.get(kullanıcı.id).addRole(kadınROL.id)
+  message.guild.members.get(kullanıcı.id).addRole(kayıtlıROL.id)
 message.guild.members.get(kullanıcı.id).removeRole(kayıtsızROL.id)
 message.guild.members.get(kullanıcı.id).send(emb.setDescription(`• Kaydın başarıyla ${message.author} tarafından yapıldı. \n • Sunucudaki İsmin : ${isim} • ${yaş} `))
 let embed2 = new Discord.RichEmbed()
 .setDescription(`${kullanıcı}, Adlı Kullanıcı Başarıyla Kayıt Oldu.`)
-.addField(`• Kayıt eden:`, message.author, true)
-.addField(`• İsim Yaş:`, args[1] | args[2]``, true)
-.addField(`• Verilen Rol:`, kadınROL.name, true)
+.addField(`• Kayıt eden:`, message.author)
+.addField(`• İsim Yaş: ${isim} | ${yaş}`)
+.addField(`• Verilen Rol:`, kadınROL.name)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
-log.send(embed2)
+db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
+channel.send(embed2)
   
 message.reply(`Kayıt işlemi başarılı \n Kayıt türü: ** KADIN **`)
 
