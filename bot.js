@@ -144,8 +144,8 @@ client.on("guildMemberAdd", async(member) => {
 
 client.on("userUpdate", async (oldUser, newUser) => {
   if (oldUser.username !== newUser.username) {
-    let tag = "JAU"; //tagınız
-    let sunucu = "720644892338028604"; //sunucu ID
+    let tag = ayarlar.tag
+    let sunucu = ayarlar.sunucuID
     let kanal = "766289274080460801" //log kanal id
     let rol = "766264956089663508"; // rol ID
     if (newUser.username.includes(tag) && !client.guilds.get(sunucu).members.get(newUser.id).roles.has(rol)) {

@@ -63,7 +63,7 @@ let embed2 = new Discord.RichEmbed()
 db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
 kayıtLOG.send(embed2)
   
-message.reply(`Kayıt işlemi başarılı \n Kayıt türü: ** KADIN **`)
+message.channel.send(embed2)
 
 
 }
@@ -77,4 +77,4 @@ exports.conf = {
 
 exports.help = {
   name: 'kadın'
-};//codare
+}
