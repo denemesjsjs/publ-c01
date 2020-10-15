@@ -174,17 +174,21 @@ if (tarih > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
   moment.locale("tr");
   let buse = client.channels.get(kanal);
     let giris = new Discord.RichEmbed()
+   
     .setDescription(`
 • ** Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz. **
 
 • ** Sunucuya Hoşgeldin Tagımızı Alarak Kayıt Olabilirsin. **
 
-• ** <@&748076408672354369> seninle ilgilenicektir. **
+• ** <@&${ayarlar.yetkiliROL}> seninle ilgilenicektir. **
 
 • ** Hesabın Oluşturulma Tarihi:** ${moment(member.user.createdAt).format(" **YYYY __DD MMMM dddd (hh:mm:ss) __ **")} **
 
 • ** ${kontrol} **
 
-• ** __ Register Odalara Girerek Kayıt Olman Lazım Dostum . __  `)
+• ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __  `)
+    .setThumbnail(member.user.avatarURL)
+    .setImage('https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
+    .setTimestamp()
 buse.send(giris)
   });
