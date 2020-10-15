@@ -43,7 +43,7 @@ const emb = new Discord.RichEmbed()
 .setTimestamp()
 .setColor(`#fffff0`)
 .setFooter(`#${message.channel.name} Kanalında Kullanıldı.`)
-
+let toplam = db.fetch(`kayitsayisi_${message.author.id}_${message.guild.id}`)
 message.guild.members.get(kullanıcı.id).setNickname(`${isim} • ${yaş}`)
 message.guild.members.get(kullanıcı.id).addRole(kadınROL.id)
   message.guild.members.get(kullanıcı.id).addRole(kayıtlıROL.id)
@@ -54,10 +54,11 @@ let embed2 = new Discord.RichEmbed()
 .setDescription(`
 • **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
-• **Verilen Rol:** ${kadınROL} \`  { ${kadınROL.id} }  \` 
+• **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL.id} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şuan ${message.guild.member.size}
+• **Sunucumuz şuan** ${message.guild.member.size}
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
+• **{ ${message.author} }Toplam kayıt sayısı =**  \` ${toplam} \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
 

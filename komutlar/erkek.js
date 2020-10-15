@@ -83,10 +83,10 @@ message.channel.send(embed3)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['k'],
+  aliases: ['e'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'kadın'
+  name: 'erkek'
 }
