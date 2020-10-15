@@ -43,7 +43,7 @@ const emb = new Discord.RichEmbed()
 .setTimestamp()
 .setColor(`#fffff0`)
 .setFooter(`#${message.channel.name} Kanalında Kullanıldı.`)
-let toplam = db.fetch(`kayitsayisi_${message.author.id}_${message.guild.id}`)
+let toplam = db.fetch(`erkek_${message.author.id}_${message.guild.id}`)
 message.guild.members.get(kullanıcı.id).setNickname(`${isim} • ${yaş}`)
 message.guild.members.get(kullanıcı.id).addRole(erkekROL.id)
   message.guild.members.get(kullanıcı.id).addRole(kayıtlıROL.id)
@@ -56,14 +56,14 @@ let embed2 = new Discord.RichEmbed()
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
 • **Verilen Rol:** <@&${erkekROL}> \`  { ${erkekROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şuan** ${message.guild.member.size}
+• **Sunucumuz şuan** \` ${message.guild.members.size} \` **kişi**
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 • **{ ${message.author} }Toplam kayıt sayısı =**  \` ${toplam} \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
 
 
-db.add(`kayitsayisi_${message.author.id}_${message.guild.id}`, 1)
+db.add(`erkek_${message.author.id}_${message.guild.id}`, 1)
 client.channels.get(ayarlar.kayıtLOG).send(embed2)
 let embed3 = new Discord.RichEmbed()
 .setTitle(`• Kayıt Başarıyla Tamamlandı!.`)
@@ -72,7 +72,7 @@ let embed3 = new Discord.RichEmbed()
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
 • **Verilen Rol:** <@&${erkekROL}> \`  { ${erkekROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şuan ${message.guild.member.size}
+• **Sunucumuz şuan** ${message.guild.members.size} **kişi**
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')

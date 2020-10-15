@@ -102,33 +102,12 @@ client.login(ayarlar.token);
 
 client.on("ready", () => {
   client.user.setPresence({
-    game: { name: `j!botekle`, type: "WATCHING" },
+    game: { name: `SPLASHEN PUBLİC BOT LİST`, type: "WATCHING" },
     status: "online"
   });
 });
 
-client.on("guildMemberAdd", member => {
-  let tag = ayarlar.tag;
-  member.setNickname(`${tag} | ${member.user.username}`);
-});
 
-client.on("message", message => {
-  let kanal2 = ayarlar.kanalengel2;
-  if (message.channel.id == kanal2) {
-    if (message.author.id == message.client.user.id) return;
-
-    message.delete(1 * 500);
-  }
-});
-
-client.on("message", (message, member) => {
-  let kanal1 = ayarlar.kanalengel;
-  if (message.channel.id == kanal1) {
-    if (message.author.id == message.client.user.id) return;
-
-    message.delete(1 * 500);
-  }
-});
 
 
 // kayıtsız rolü
