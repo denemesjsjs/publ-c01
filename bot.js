@@ -109,6 +109,15 @@ client.on("ready", () => {
 
 
 
+// İSİM YAŞ İSİM DEĞİŞTİRME 
+
+client.on("guildMemberAdd", member => {
+  let tag = ayarlar.tag;
+  member.setNickname(`${tag} | İsim • Yaş`);
+});
+
+// İSİM YAŞ İSİM DEĞİŞTİRME SON
+
 
 // kayıtsız rolü
 
@@ -117,7 +126,7 @@ client.on("guildMemberAdd", async(member) => {
   if(!otorol) return
   let kanal = ayarlar.kayıtsızROLLOG
   await(member.addRole(member.guild.roles.get(otorol).id)) 
-  kanal.send(`• ${member} • adlı kullanıcıya kayıtsız rolü verildi.`)
+ 
 });
 
 /// kayıtsız rolü son
@@ -128,12 +137,22 @@ client.on("userUpdate", async (oldUser, newUser) => {
     let tag = ayarlar.tag
   
     let rol = ayarlar.tagROL;
+    
+    
+    let embed1 = new Discord.RichEmbed()
+    .setDescription(`${newUser} ${tag} tagını aldığı için <@&${rol}> rolünü kazandı!`)
+    
+    
+    let embed2 = new Discord.RichEmbed()
+    .setDescription(`${newUser} ${tag} tagını çıkardığı için <@&${rol}> rolünü kaybetti!`)
+    
+    
     if (newUser.username.includes(tag) && !client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.has(rol)) {
-      client.channels.get(ayarlar.tagLOG).send(`${newUser} ${tag} tagını aldığı için <@&${rol}> rolünü kazandı!`)
+      client.channels.get(ayarlar.tagLOG).send(embed1)
       client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).addRole(rol)
     } if (!newUser.username.includes(tag) && client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.has(rol)) {
       client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).removeRole(rol)
-      client.channels.get(ayarlar.tagLOG).send(`${newUser} ${tag} tagını çıkardığı için <@&${rol}> rolünü kaybetti!`)
+      client.channels.get(ayarlar.tagLOG).send(embed2)
     }
 
   }
