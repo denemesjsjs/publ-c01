@@ -24,7 +24,7 @@ var embed = new Discord.RichEmbed()
 
 `)
 .setThumbnail(yetkili.avatarURL)
-.setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
+.setImage('https://cdn.discordapp.com/attachments/620989964104237077/766391664163029012/RDF_Barrinha-1-2-1-1-1-1-1-1.gif')
 message.reply(embed)
 
 }
