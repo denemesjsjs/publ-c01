@@ -3,11 +3,11 @@ const db = require('quick.db');
 
 
 exports.run = async (client, message, args) => {
-let toplamkayıt = db.fetch(`kayitsayisi_${message.author.id}_${message.guild.id} || 0 `)
+let toplam = db.fetch(`kayitsayisi_${message.author.id}_${message.guild.id}`)
 
 var embed = new Discord.RichEmbed()
 
-.setDescription(`Kayıt sayın : ${toplamkayıt}`)
+.setDescription(`Kayıt sayın : ${toplam}`)
 message.channel.send(embed)
 
 }
