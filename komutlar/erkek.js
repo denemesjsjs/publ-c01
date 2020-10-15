@@ -5,7 +5,7 @@ const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, message, args) => {
 
-    let erkekROL = ayarlar.erkekROL 
+    let erkekROL = ayarlar.kadınROL 
     let kayıtsızROL = ayarlar.kayıtsızROL
     let kayıtlıROL = ayarlar.kayıtlıROL
     let yetkili = ayarlar.yetkiliROL
@@ -43,12 +43,15 @@ const emb = new Discord.RichEmbed()
 .setTimestamp()
 .setColor(`#fffff0`)
 .setFooter(`#${message.channel.name} Kanalında Kullanıldı.`)
-let toplam = db.fetch(`erkek_${message.author.id}_${message.guild.id}`)
+let kız = db.fetch(`kız_${message.author.id}_${message.guild.id}`)
+let erkek = db.fetch(`erkek_${message.author.id}_${message.guild.id}`)
+let toplam = erkek+kız
 message.guild.members.get(kullanıcı.id).setNickname(`${isim} • ${yaş}`)
 message.guild.members.get(kullanıcı.id).addRole(erkekROL.id)
   message.guild.members.get(kullanıcı.id).addRole(kayıtlıROL.id)
 message.guild.members.get(kullanıcı.id).removeRole(kayıtsızROL.id)
 message.guild.members.get(kullanıcı.id).send(emb.setDescription(`• Kaydın başarıyla ${message.author} tarafından yapıldı. \n • Sunucudaki İsmin : ${isim} • ${yaş} `))
+  db.add(`erkek_${message.author.id}_${message.guild.id}`, "1")
 let embed2 = new Discord.RichEmbed()
 .setTitle(`• Bir Kullanıcı Kayıt Oldu.`)
 .setDescription(`
@@ -56,16 +59,17 @@ let embed2 = new Discord.RichEmbed()
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
 • **Verilen Rol:** <@&${erkekROL}> \`  { ${erkekROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şuan** **\` ${message.guild.members.size} \`** **kişi**
+• **Sunucumuz şu an** \` ${message.guild.members.size} \`** kişi **
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
-• **{ ${message.author} }Toplam kayıt sayısı =**  \` ${toplam} \` 
+• **{ ${message.author} } Toplam kayıt sayısı =**  \` ${toplam} \` 
+
+• **{    __Toplam Erkek Kaydı =  \` ${erkek} \` Toplam Kız Kaydı= \` ${kız} \`__  }**  
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
 
 
 
 client.channels.get(ayarlar.kayıtLOG).send(embed2)
-db.add(`erkek_${message.author.id}_${message.guild.id}`, 1)
 let embed3 = new Discord.RichEmbed()
 .setTitle(`• Kayıt Başarıyla Tamamlandı!.`)
 .setDescription(`
@@ -73,7 +77,7 @@ let embed3 = new Discord.RichEmbed()
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
 • **Verilen Rol:** <@&${erkekROL}> \`  { ${erkekROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
-• **Sunucumuz şuan** **\` ${message.guild.members.size} \`** **kişi**
+• **Sunucumuz şu an**  \` ${message.guild.members.size} \`** kişi **
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 `)
 .setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
