@@ -54,7 +54,7 @@ let embed2 = new Discord.RichEmbed()
 .setDescription(`
 • **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
-• **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL.id} }  \` 
+• **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
 • **Sunucumuz şuan** ${message.guild.member.size}
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
@@ -70,7 +70,7 @@ let embed3 = new Discord.RichEmbed()
 .setDescription(`
 • **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
-• **Verilen Rol:** ${kadınROL} \`  { ${kadınROL.id} }  \` 
+• **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL} }  \` 
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
 • **Sunucumuz şuan ${message.guild.member.size}
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
