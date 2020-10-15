@@ -1,18 +1,20 @@
+const db = require('quick.db')
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json')
 exports.run = function(client, message, args) {
   let erkek = ayarlar.erkekROL
+  let toplam = db.fetch(`kayıtlar_${message.author.id}`,1)
   let yetkili = message.author
   let kullanıcı = message.guild.members.get(args[0]);
   if(!message.member.hasPermission('ADMINISTRATOR')) return
   var role = message.guild.roles.find(role => role.id === erkek); 
   kullanıcı.addRole(role);
-  db.set(``)
+  db.set(`kayıtlar_${message.author.id}`,1)
   let embed = new Discord.RichEmbed()
   .setDescription('Kişinin kaydı başarıyla yapıldı')
   .addField(`Kaydı Yapan Yetkili : ${yetkili}`)
   .addField(`Kayıt Olan Kullanıcı : ${kullanıcı}`)
-  .addField(``)
+  .addField(`${yetkili}'nin toplam kayıt sayısı : '`)
   message.channel.send(embed);
 };
 
@@ -28,4 +30,5 @@ exports.help = {
   description: 'JavaScript kanallarına erişim sağlar.',
   usage: 'abone'
 };
+
 
