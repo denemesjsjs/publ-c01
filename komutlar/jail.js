@@ -13,19 +13,18 @@ exports.run = function(client, message, args) {
   
   let embed2 = new Discord.RichEmbed()
   .setThumbnail(jailli.user.avatarURL)
-  .setTitle(` <a:jke:751558669585612830> • __\` Bir Kullanıcı Jaile Atıldı  \`__   `)
+  .setTitle(` <a:jke:751558669585612830> • __\`Bir Kullanıcı Jaile Atıldı \`__   `)
   .setDescription(`
-<a:jke:751558669585612830> • __**\`  Yetkili \`**__ ${message.author}
+<a:jke:751558669585612830> • __**\`Yetkili\`**__ ${message.author}
+<a:jke:751558669585612830> • __**\`Kullanıcı\`**__ ${jailli} 
 
-<a:jke:751558669585612830> • __**\` Kullanıcı \`**__ ${jailli} 
-
-<a:jke:751558669585612830> • __**\` Jaile Atılma Sebebi \`**__ \n\n         • **__\` ${sebep} \`__**
+<a:jke:751558669585612830> • __**\`Jaile Atılma Sebebi\`**__ \n• __\`${sebep}\`__
 `)
   
   let embed = new Discord.RichEmbed()
-  .setTitle(` <a:jke:751558669585612830> • __\` Kullanıcı Başarıyla Jaile Atıldı  \`__   `)
-  .setDescription(`<a:jke:751558669585612830> • __**\` Yetkili \`**__ ${message.author}`)
-  message.channel.send(embed);
+  .setTitle(` <a:jke:751558669585612830> • __\`Kullanıcı Başarıyla Jaile Atıldı\`__   `)
+  .setDescription(`<a:jke:751558669585612830> • __**\`Yetkili\`**__ ${message.author}`)
+  message.channel.send(embed).then(m => m.delete(4000))
   client.channels.get(ayarlar.jailLOG).send(embed2)
 };
 

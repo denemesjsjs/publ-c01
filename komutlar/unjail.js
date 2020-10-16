@@ -12,18 +12,19 @@ exports.run = function(client, message, args) {
    abone.addRole(kayıtlı);
   
   let embed2 = new Discord.RichEmbed()
-  .setTitle(` <a:jke:751558669585612830> • __\` Bir Kullanıcı Jailden Çıkarıldı  \`__   `)
+  .setTitle(` <a:jke:751558669585612830> • __\`Bir Kullanıcı Jailden Çıkarıldı\`__   `)
   .setDescription(`
-<a:jke:751558669585612830> • __**\` Çıkaran Yetkili \`**__ ${message.author}
-<a:jke:751558669585612830> • __**\` Çıkarılan Kullanıcı \`**__ ${abone}`)
+<a:jke:751558669585612830> • __**\`Çıkaran Yetkili\`**__ ${message.author}
+<a:jke:751558669585612830> • __**\`Çıkarılan Kullanıcı\`**__ ${abone}`)
+  .setThumbnail(abone.user.avatarURL)
   
   
   let embed = new Discord.RichEmbed()
-  .setTitle(` <a:jke:751558669585612830> • __\` Kullanıcı Başarıyla Jailden Çıkarıldı  \`__   `)
-  .setDescription(`<a:jke:751558669585612830> • __**\` Yetkili \`**__ ${message.author}`)
-  
-  message.channel.send(embed);
-  log.send(embed2);
+  .setTitle(` <a:jke:751558669585612830> • __\` Kullanıcı Başarıyla Jailden Çıkarıldı\`__   `)
+  .setDescription(`<a:jke:751558669585612830> • __**\`Yetkili\`**__ ${message.author}`)
+  .setThumbnail(abone.user.avatarURL)
+  message.channel.send(embed).then(m => m.delete(4000))
+  client.channels.get(ayarlar.jailLOG).send(embed2)
 };
 
 exports.conf = {
