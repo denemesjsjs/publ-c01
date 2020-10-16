@@ -201,17 +201,16 @@ kanal1.send(giris)
 client.on("guildMemberAdd", async member => {
   const kanal = ayarlar.jailKANAL;
   const rol = ayarlar.jailROL;
-  const jail = member.guild.users.get(member.id);
+  const jail = client.users.get(member.id);
 
   const kurulus = new Date().getTime() - jail.createdAt.getTime();
 
   if (kurulus < 1196000000) {
-    client.channels
-      .get(kanal)
-      .send(`${member} Üyesi jaile atıldı.`)
-    member
-      .send("Fake üye olduğun için seni karantinaya aldım!")
-      .catch(() => console.log(`DM Kapalı.`))
+    
+    client.channels.get(kanal).send(`${member} Üyesi jaile atıldı.`)
+    member.send("Sunucumuzda belirli bir tarihten önce kurulan hesaplar jaile atılır!")
+    
     member.addRole(rol)
   }
 });
+
