@@ -181,8 +181,8 @@ client.on("userUpdate", async (oldUser, newUser) => {
 // BOT OTOROL
 
 client.on('guildMemberAdd', async member => {
-if(!member.bot) return
-member.setRoles([ayarlar.botROL])
+if(member.user.bot)
+member.setRoles(['766634491502395392'])
   member.send('sa')
 })
 // GİRİŞ 

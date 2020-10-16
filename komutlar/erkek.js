@@ -5,7 +5,7 @@ const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, message, args) => {
 
-    let erkekROL = ayarlar.kadınROL 
+    let erkekROL = ayarlar.erkekROL 
     let kayıtsızROL = ayarlar.kayıtsızROL
     let kayıtlıROL = ayarlar.kayıtlıROL
     let yetkili = ayarlar.yetkiliROL
