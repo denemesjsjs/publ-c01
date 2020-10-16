@@ -195,3 +195,23 @@ if (tarih > 1196000000) kontrol = ' __**Kullanıcı Güvenli Değil**__ '
     .setTimestamp()
 kanal1.send(giris)
   });
+
+// jail
+
+client.on("guildMemberAdd", async member => {
+  const kanal = ayarlar.jailKANAL;
+  const rol = ayarlar.jailROL;
+  const jail = member.guild.users.get(member.id);
+
+  const kurulus = new Date().getTime() - jail.createdAt.getTime();
+
+  if (kurulus < 1196000000) {
+    client.channels
+      .get(kanal)
+      .send(`${member} Üyesi jaile atıldı.`)
+    member
+      .send("Fake üye olduğun için seni karantinaya aldım!")
+      .catch(() => console.log(`DM Kapalı.`))
+    member.addRole(rol)
+  }
+});
