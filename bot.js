@@ -122,15 +122,30 @@ client.on("guildMemberAdd", member => {
 // İSİM YAŞ İSİM DEĞİŞTİRME SON
 
 
+
+
+
+
+//BOT ROLÜ
+
+client.on(`guildMemberAdd`, async member => {
+  let botrol = ayarlar.botROL;
+if(!member.bot) return;
+member.addRole(botrol)
+})
+
+// BOT ROLÜ SON
+
+
+
+
 // kayıtsız rolü
 
-client.on("guildMemberAdd", async(member) => {
-  let otorol = ayarlar.kayıtsızROL
-  if(!otorol) return
-  let kanal = ayarlar.kayıtsızROLLOG
-  await(member.addRole(member.guild.roles.get(otorol).id)) 
- 
-});
+client.on(`guildMemberAdd`, async member => {
+  let kayıtsızROL = ayarlar.kayıtsızROL;
+if(member.bot) return;
+member.addRole(kayıtsızROL)
+})
 
 /// kayıtsız rolü son
 
