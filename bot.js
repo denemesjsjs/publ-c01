@@ -111,6 +111,27 @@ client.on("ready", () => {
 });
 
 
+// JAİL
+client.on("guildMemberAdd", async member => {
+  const kanal = ayarlar.jailKANAL;
+  const jailLOG = ayarlar.jailLOG;
+  const rol = ayarlar.jailROL;
+  const jail = client.users.get(member.id);
+
+  const kurulus = new Date().getTime() - jail.createdAt.getTime();
+
+  if (kurulus < 1196000000) {
+    
+    client.channels.get(kanal).send(`${member} Üyesi jaile atıldı.`)
+    member.send("Sunucumuzda belirli bir tarihten önce kurulan hesaplar jaile atılır!")
+    let embed1 = new Discord.RichEmbed()
+    .setTitle(` <a:jke:751558669585612830> • __\` Bir kullanıcı jaile atıldı \`__ `)
+    .setDescription(` <a:jke:751558669585612830> • **__Kullanıcı__** ${member}  `)
+     client.channels.get(ayarlar.jailLOG).send(embed1)
+    member.addRole(rol)
+  }
+});
+// JAİL SON
 
 // İSİM YAŞ İSİM DEĞİŞTİRME 
 
@@ -149,7 +170,7 @@ member.addRole(kayıtsızROL)
 
 /// kayıtsız rolü son
 
-
+// TAG LOG
 client.on("userUpdate", async (oldUser, newUser) => {
   if (oldUser.username !== newUser.username) {
     let tag = ayarlar.tag
@@ -159,11 +180,11 @@ client.on("userUpdate", async (oldUser, newUser) => {
     
     let embed1 = new Discord.RichEmbed()
     .setDescription(`${newUser} ${tag} tagını aldığı için <@&${rol}> rolünü kazandı!`)
-    
+    .setImage('https://cdn.discordapp.com/attachments/620989964104237077/766391664163029012/RDF_Barrinha-1-2-1-1-1-1-1-1.gif')
     
     let embed2 = new Discord.RichEmbed()
     .setDescription(`${newUser} ${tag} tagını çıkardığı için <@&${rol}> rolünü kaybetti!`)
-    
+    .setImage('https://cdn.discordapp.com/attachments/620989964104237077/766391664163029012/RDF_Barrinha-1-2-1-1-1-1-1-1.gif')
     
     if (newUser.username.includes(tag) && !client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.has(rol)) {
       client.channels.get(ayarlar.tagLOG).send(embed1)
@@ -175,8 +196,10 @@ client.on("userUpdate", async (oldUser, newUser) => {
 
   }
 })
+// TAG LOG SON
 
 
+// GİRİŞ 
   client.on("guildMemberAdd", member => { 
     const moment = require('moment');
   const kanal = ayarlar.giriskanal;
@@ -213,22 +236,4 @@ if (tarih > 1196000000) kontrol = ' __**Kullanıcı Güvenli Değil**__ '
     .setTimestamp()
 kanal1.send(giris)
   });
-
-// jail
-
-client.on("guildMemberAdd", async member => {
-  const kanal = ayarlar.jailKANAL;
-  const rol = ayarlar.jailROL;
-  const jail = client.users.get(member.id);
-
-  const kurulus = new Date().getTime() - jail.createdAt.getTime();
-
-  if (kurulus < 1196000000) {
-    
-    client.channels.get(kanal).send(`${member} Üyesi jaile atıldı.`)
-    member.send("Sunucumuzda belirli bir tarihten önce kurulan hesaplar jaile atılır!")
-    
-    member.addRole(rol)
-  }
-});
-
+// GİRİŞ SON
