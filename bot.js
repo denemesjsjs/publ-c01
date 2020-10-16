@@ -3,9 +3,12 @@ const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
 const kanal = ayarlar.kanal;
 const fs = require("fs");
+const db = require('quick.db')
 require("./util/eventLoader")(client);
 const express = require("express");
 const app = express();
+let prefix = ayarlar.prefix
+
 const http = require("http");
 app.get("/", (request, response) => {
   response.sendStatus(200);
