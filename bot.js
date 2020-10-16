@@ -188,6 +188,7 @@ client.on("userUpdate", async (oldUser, newUser) => {
   const embed = new Discord.RichEmbed()
   let rol = ayarlar.kayıtsızROL
  member.addRole(rol)
+    if(member.bot(member.addRole(ayarlar.botROL)))
   var kontrol;
 if (tarih < 1296000000) kontrol = '<a:no1:756946138342621295> __**Bu Kullanıcı Şüpheli**__'
 if (tarih > 1296000000) kontrol = '<a:tik3:756946140825649214> __**Bu Kullanıcı Güvenli**__'
@@ -204,11 +205,11 @@ if (tarih > 1296000000) kontrol = '<a:tik3:756946140825649214> __**Bu Kullanıc�
 
 • <a:alarm1:756946152938799225> ** <@&${ayarlar.yetkiliROL}> __seninle ilgilenicektir.__ **
 
-• ** __Hesabın Oluşturulma Tarihi:__** \n \` ${moment(member.user.createdAt).format("YYYY DD MMMM dddd (hh:mm:ss)")} \`
+• <a:sari3:751558669585612830> ** __Hesabın Oluşturulma Tarihi:__** \n • \` ${moment(member.user.createdAt).format("YYYY DD MMMM dddd (hh:mm:ss)")} \`
 
 •  ${kontrol} 
 
-• ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __ ** 
+• <a:duyur:766652129678721074> ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __ ** 
 
 `)
     .setThumbnail(member.user.avatarURL || 'https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
