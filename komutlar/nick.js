@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const ayarlar = require('../ayarlar.json');
 const prefix = ayarlar.prefix
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message, args) => {//splashen
   let isim = args[1]
   let uye = message.mentions.users.first();
   let yaş = args[2]
@@ -35,4 +35,4 @@ exports.conf = {
 exports.help = {
     name: 'nick',
   
-}
+}//splashen

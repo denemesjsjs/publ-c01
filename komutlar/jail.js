@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json')
-exports.run = function(client, message, args) {
+exports.run = function(client, message, args) {//splashen
   let jailli = message.mentions.members.first()
   let sebep = args.slice(1).join(' ')
   let rol = ayarlar.jailROL
@@ -38,3 +38,4 @@ exports.conf = {
 exports.help = {
   name: 'jail'
 };
+//splashen

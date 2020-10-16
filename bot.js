@@ -10,7 +10,7 @@ const app = express();
 let prefix = ayarlar.prefix
 
 const http = require("http");
-app.get("/", (request, response) => {
+app.get("/", (request, response) => {//splashen
   response.sendStatus(200);
 });
 app.listen(process.env.PORT);
@@ -25,7 +25,7 @@ const log = message => {
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-fs.readdir("./komutlar/", (err, files) => {
+fs.readdir("./komutlar/", (err, files) => {//splashen
   if (err) console.error(err);
   log(`${files.length} komut yüklenecek.`);
   files.forEach(f => {
@@ -39,7 +39,7 @@ fs.readdir("./komutlar/", (err, files) => {
 });
 
 client.reload = command => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {//splashen
     try {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
@@ -59,7 +59,7 @@ client.reload = command => {
 };
 
 client.load = command => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {//splashen
     try {
       let cmd = require(`./komutlar/${command}`);
       client.commands.set(command, cmd);
@@ -74,7 +74,7 @@ client.load = command => {
 };
 
 client.unload = command => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {//splashen
     try {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
@@ -91,7 +91,7 @@ client.unload = command => {
 
 ////////////////////////
 
-client.elevation = message => {
+client.elevation = message => {//splashen
   if (!message.guild) {
     return;
   }
@@ -103,9 +103,9 @@ client.elevation = message => {
 client.login(ayarlar.token);
 
 
-client.on("ready", () => {
+client.on("ready", () => {//splashen
   client.user.setPresence({
-    game: { name: `SPLASHEN PUBLİC BOT LİST`, type: "WATCHING" },
+    game: { name: `SPLASHEN PUBLİC BOT ALTYAPI`, type: "WATCHING" },
     status: "online"
   });
 });
@@ -116,7 +116,8 @@ client.on("ready", () => {
 
 client.on("guildMemberAdd", member => {
   let tag = ayarlar.tag;
-  member.setNickname(`${tag} | İsim • Yaş`);
+  //splashen
+  member.setNickname(`${tag} İsim • Yaş`);
 });
 
 // İSİM YAŞ İSİM DEĞİŞTİRME SON
@@ -128,7 +129,7 @@ client.on("guildMemberAdd", member => {
 
 //BOT ROLÜ
 
-client.on(`guildMemberAdd`, async member => {
+client.on(`guildMemberAdd`, async member => {//splashen
   let botrol = ayarlar.botROL;
 if(!member.bot) return;
 member.addRole(botrol)
@@ -148,9 +149,11 @@ member.addRole(kayıtsızROL)
 })
 
 /// kayıtsız rolü son
+//splashen
+
 
 // TAG LOG
-client.on("userUpdate", async (oldUser, newUser) => {
+client.on("userUpdate", async (oldUser, newUser) => {//splashen
   if (oldUser.username !== newUser.username) {
     let tag = ayarlar.tag
   
@@ -176,14 +179,13 @@ client.on("userUpdate", async (oldUser, newUser) => {
   }
 })
 // TAG LOG SON
-
+//splashen
 
 // BOT OTOROL
 
-client.on('guildMemberAdd', async member => {
+client.on('guildMemberAdd', async member => {//splashen
 if(member.user.bot)
 member.setRoles(['766634491502395392'])
-  member.send('sa')
 })
 // GİRİŞ 
   client.on("guildMemberAdd", member => { 
@@ -194,7 +196,7 @@ member.setRoles(['766634491502395392'])
     const tarih = new Date().getTime() - user.createdAt.getTime();  
   const embed = new Discord.RichEmbed()
   let rol = ayarlar.kayıtsızROL
- member.addRole(rol)
+ member.addRole(rol)//splashen
 
   var kontrol;
 if (tarih < 1296000000) kontrol = '<a:no1:756946138342621295> __**Bu Kullanıcı Şüpheli**__'
@@ -218,10 +220,11 @@ if (tarih > 1296000000) kontrol = '<a:tik3:756946140825649214> __**Bu Kullanıc�
 
 • <a:duyur:766652129678721074> ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __ ** 
 
-`)
+`)//splashen
     .setThumbnail(member.user.avatarURL || 'https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setImage('https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setTimestamp()
 kanal1.send(giris)
   });
 // GİRİŞ SON
+//splashen

@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json')
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message, args) => {//splashen
     let tag = ayarlar.tag
     const voiceChannels = message.guild.channels.filter(c => c.type === 'voice');
     let sesli = 0
@@ -28,5 +28,5 @@ exports.conf = {
 
 exports.help = {
     name: 'say'
-  
+  //splashen
 }

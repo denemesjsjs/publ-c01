@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json')
-exports.run = function(client, message, args) {
+exports.run = function(client, message, args) {//splashen
   let abone = message.mentions.members.first()
   let log = ayarlar.jailLOG
   let kayıtlı = ayarlar.kayıtlıROL
@@ -8,7 +8,7 @@ exports.run = function(client, message, args) {
   if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('Yetkin yok')
    if(!abone) return message.channel.send('Jailden çıkaracağın kişiyi etiketlemelisin.')
   var role = message.guild.roles.find(role => role.id === rol); 
-  abone.removeRole(['766634561583972373']);
+  abone.removeRole(rol);
    abone.addRole(kayıtlı);
   
   let embed2 = new Discord.RichEmbed()
@@ -37,3 +37,4 @@ exports.conf = {
 exports.help = {
   name: 'unjail'
 };
+//splashen

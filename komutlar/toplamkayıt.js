@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const db = require('quick.db');
 
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message, args) => {//splashen
   let yetkili = message.author
 let erkek = db.fetch(`erkek_${message.author.id}_${message.guild.id}`)
 let kız = db.fetch(`kız_${message.author.id}_${message.guild.id}`)
@@ -38,4 +38,4 @@ exports.conf = {
 
 exports.help = {
   name: 'toplamkayıt'
-};
+};//splashen
