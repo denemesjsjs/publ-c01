@@ -1,33 +1,33 @@
 {
-  "prefix": "!",
-  "token": "NzYwNTM1ODY4ODM0MDU0MTU0.X3NeOQ.NEz2uxDDV4Lcf2AdEFV8TG9AZjo",
+  "prefix": "",
+  "token": "",
 
   
   
-  "sunucuID" : "720644892338028604",
+  "sunucuID" : "",
   
-  "kayıtLOG": "766648833924136970",
-  "isimLOG": "766629006790492163",
+  "kayıtLOG": "",
+  "isimLOG": "",
   
-   "vipROL": "766387933951033355",
+   "vipROL": "",
   
-  "tag" : "✭",
-  "tagLOG" : "766629027947479058",
-  "tagROL" : "766371904436568066",
+  "tag" : "",
+  "tagLOG" : "",
+  "tagROL" : "",
   
-  "kayıtsızROL": "766371734000500768",
-  "kayıtlıROL": "766371733665742860",
-  "botROL": "766634491502395392",
+  "kayıtsızROL": "",
+  "kayıtlıROL": "",
+  "botROL": "",
   
 
-  "kadınROL": "766371733296644117",
-  "erkekROL": "766371732331823197",
+  "kadınROL": "",
+  "erkekROL": "",
   
-  "jailLOG" : "766663223772315699",
-  "jailROL": "766634561583972373",
+  "jailLOG" : "",
+  "jailROL": "",
 
 
-  "yetkiliROL": "766371732037959720",
-  "giriskanal": "766628127446925312"
+  "yetkiliROL": "",
+  "giriskanal": ""
 
 }
