@@ -178,6 +178,13 @@ client.on("userUpdate", async (oldUser, newUser) => {
 // TAG LOG SON
 
 
+// BOT OTOROL
+
+client.on('guildMemberAdd', async member => {
+if(!member.bot) return
+member.setRoles([ayarlar.botROL])
+  member.send('sa')
+})
 // GİRİŞ 
   client.on("guildMemberAdd", member => { 
     const moment = require('moment');
@@ -188,7 +195,7 @@ client.on("userUpdate", async (oldUser, newUser) => {
   const embed = new Discord.RichEmbed()
   let rol = ayarlar.kayıtsızROL
  member.addRole(rol)
-    if(member.bot(member.addRole(ayarlar.botROL)))
+
   var kontrol;
 if (tarih < 1296000000) kontrol = '<a:no1:756946138342621295> __**Bu Kullanıcı Şüpheli**__'
 if (tarih > 1296000000) kontrol = '<a:tik3:756946140825649214> __**Bu Kullanıcı Güvenli**__'
