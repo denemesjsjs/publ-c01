@@ -111,27 +111,6 @@ client.on("ready", () => {
 });
 
 
-// JAİL
-client.on("guildMemberAdd", async member => {
-  const kanal = ayarlar.jailKANAL;
-  const jailLOG = ayarlar.jailLOG;
-  const rol = ayarlar.jailROL;
-  const jail = client.users.get(member.id);
-
-  const kurulus = new Date().getTime() - jail.createdAt.getTime();
-
-  if (kurulus < 1196000000) {
-    
-    client.channels.get(kanal).send(`${member} Üyesi jaile atıldı.`)
-    member.send("Sunucumuzda belirli bir tarihten önce kurulan hesaplar jaile atılır!")
-    let embed1 = new Discord.RichEmbed()
-    .setTitle(` <a:jke:751558669585612830> • __\` Bir kullanıcı jaile atıldı \`__ `)
-    .setDescription(` <a:jke:751558669585612830> • **__Kullanıcı__** ${member}  `)
-     client.channels.get(ayarlar.jailLOG).send(embed1)
-    member.addRole(rol)
-  }
-});
-// JAİL SON
 
 // İSİM YAŞ İSİM DEĞİŞTİRME 
 
@@ -207,10 +186,11 @@ client.on("userUpdate", async (oldUser, newUser) => {
   require("moment-duration-format");
     const tarih = new Date().getTime() - user.createdAt.getTime();  
   const embed = new Discord.RichEmbed()
- 
+  let rol = ayarlar.kayıtsızROL
+ member.addRole(rol)
   var kontrol;
-if (tarih < 1196000000) kontrol = ' __**Kullanıcı Güvenli**__ '
-if (tarih > 1196000000) kontrol = ' __**Kullanıcı Güvenli Değil**__ '
+if (tarih < 1296000000) kontrol = '<a:no1:756946138342621295> __**Bu Kullanıcı Şüpheli**__'
+if (tarih > 1296000000) kontrol = '<a:tik3:756946140825649214> __**Bu Kullanıcı Güvenli**__'
   moment.locale("tr");
   let kanal1 = client.channels.get(kanal);
     let giris = new Discord.RichEmbed()
@@ -218,11 +198,11 @@ if (tarih > 1196000000) kontrol = ' __**Kullanıcı Güvenli Değil**__ '
     .setDescription(`
 • ** __Hoşgeldin! ${member}__ **
 
-•  **__Seninle Birlikte ${member.guild.memberCount} Kişiyiz.__ **
+•  <a:pembeh:751553654561046619> **__Seninle Birlikte ${member.guild.memberCount} Kişiyiz.__ **
 
 • \`{ ${ayarlar.tag} }\`** __Tagımızı alarak ekibimize katılabilirsin.__ **
 
-• ** <@&${ayarlar.yetkiliROL}> __seninle ilgilenicektir.__ **
+• <a:alarm1:756946152938799225> ** <@&${ayarlar.yetkiliROL}> __seninle ilgilenicektir.__ **
 
 • ** __Hesabın Oluşturulma Tarihi:__** \n \` ${moment(member.user.createdAt).format("YYYY DD MMMM dddd (hh:mm:ss)")} \`
 
