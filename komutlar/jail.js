@@ -9,7 +9,7 @@ exports.run = function(client, message, args) {//splashen
   if(!sebep) return message.channel.send('Jail sebebini belirtmelisin.')
   
   var role = message.guild.roles.find(role => role.id === rol); 
-  jailli.setRoles([rol]);
+  jailli.addRole(rol);
   
   let embed2 = new Discord.RichEmbed()
   .setThumbnail(jailli.user.avatarURL)

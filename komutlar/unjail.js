@@ -9,7 +9,6 @@ exports.run = function(client, message, args) {//splashen
    if(!abone) return message.channel.send('Jailden çıkaracağın kişiyi etiketlemelisin.')
   var role = message.guild.roles.find(role => role.id === rol); 
   abone.removeRole(rol);
-   abone.addRole(kayıtlı);
   
   let embed2 = new Discord.RichEmbed()
   .setTitle(` <a:jke:751558669585612830> • __\`Bir Kullanıcı Jailden Çıkarıldı\`__   `)
