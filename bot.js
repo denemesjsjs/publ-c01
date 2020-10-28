@@ -132,7 +132,7 @@ client.on("guildMemberAdd", member => {
 client.on(`guildMemberAdd`, async member => {//splashen
   let botrol = ayarlar.botROL;
 if(!member.bot) return;
-member.roles.add(botrol)
+member.addRole(botrol)
 })
 
 // BOT ROLÜ SON
@@ -145,7 +145,7 @@ member.roles.add(botrol)
 client.on(`guildMemberAdd`, async member => {
   let kayıtsızROL = ayarlar.kayıtsızROL;
 if(member.bot) return;
-member.roles.add(kayıtsızROL)
+member.addRole(kayıtsızROL)
 })
 
 /// kayıtsız rolü son
@@ -170,9 +170,9 @@ client.on("userUpdate", async (oldUser, newUser) => {//splashen
     
     if (newUser.username.includes(tag) && !client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.has(rol)) {
       client.channels.get(ayarlar.tagLOG).send(embed1)
-      client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.add(rol)
+      client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).addRole(rol)
     } if (!newUser.username.includes(tag) && client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.has(rol)) {
-      client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).roles.remove(rol)
+      client.guilds.get(ayarlar.sunucuID).members.get(newUser.id).removeRole(rol)
       client.channels.get(ayarlar.tagLOG).send(embed2)
     }
 
@@ -185,18 +185,18 @@ client.on("userUpdate", async (oldUser, newUser) => {//splashen
 
 client.on('guildMemberAdd', async member => {//splashen
 if(member.user.bot)
-member.roles.set(['766634491502395392'])
+member.setRoles(['766634491502395392'])
 })
 // GİRİŞ 
   client.on("guildMemberAdd", member => { 
     const moment = require('moment');
   const kanal = ayarlar.giriskanal;
-  let user = client.users.cache.get(member.id);
+  let user = client.users.get(member.id);
   require("moment-duration-format");
     const tarih = new Date().getTime() - user.createdAt.getTime();  
   const embed = new Discord.RichEmbed()
   let rol = ayarlar.kayıtsızROL
- member.roles.add(rol)//splashen
+ member.addRole(rol)//splashen
 
   var kontrol;
 if (tarih < 1296000000) kontrol = '<a:no1:756946138342621295> __**Bu Kullanıcı Şüpheli**__'
@@ -221,7 +221,7 @@ if (tarih > 1296000000) kontrol = '<a:tik3:756946140825649214> __**Bu Kullanıc�
 • <a:duyur:766652129678721074> ** __ Ses teyit odasında kaydınızı yaptırabilirsiniz. __ ** 
 
 `)//splashen
-    .setThumbnail(member.user.avatarURL() || 'https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
+    .setThumbnail(member.user.avatarURL || 'https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setImage('https://cdn.discordapp.com/attachments/766342468576608318/766343451994226778/af8039261a387be71514bb4c2e5e54b5.gif')
     .setTimestamp()
 kanal1.send(giris)
