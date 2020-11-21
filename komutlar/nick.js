@@ -4,6 +4,8 @@ const ayarlar = require('../ayarlar.json');
 const prefix = ayarlar.prefix
 
 exports.run = async (client, message, args) => {//splashen
+  let yetkili2 = ayarlar.yetkiliROL
+  if(!message.member.roles.has(yetkili2)) return message.channel.send('Bu işlemi sadece yetkililer yapabilir') 
   let isim = args[1]
   let uye = message.mentions.users.first();
   let yaş = args[2]
