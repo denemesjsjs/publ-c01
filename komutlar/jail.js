@@ -24,6 +24,7 @@ exports.run = function(client, message, args) {//splashen
   let embed = new Discord.RichEmbed()
   .setTitle(` <a:jke:751558669585612830> • __\`Kullanıcı Başarıyla Jaile Atıldı\`__   `)
   .setDescription(`<a:jke:751558669585612830> • __**\`Yetkili\`**__ ${message.author}`)
+  .setImage(`https://cdn.discordapp.com/attachments/522469528505155584/780040427616731136/simsek.gif`)
   message.channel.send(embed).then(m => m.delete(4000))
   client.channels.get(ayarlar.jailLOG).send(embed2)
 };

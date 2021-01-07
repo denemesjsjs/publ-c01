@@ -56,16 +56,22 @@ let embed2 = new Discord.RichEmbed()
 .setTitle(`• Bir Kullanıcı Kayıt Oldu.`)
 .setDescription(`
 • **Kayıt Olan Kullanıcı:** ${kullanıcı} \`  { ${kullanıcı.id} }  \` 
+
 • **İsim Yaş:** \` ${isim} | ${yaş} \`
+
 • **Verilen Rol:** <@&${kadınROL}> \`  { ${kadınROL} }  \` 
+
 • **Bu Hesap:** \`  { ${kontrol} }  \` 
+
 • **Sunucumuz şu an** \` ${message.guild.members.size} \`** kişi **
+
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
+
 • **{ ${message.author} } Toplam kayıt sayısı =**  \` ${toplam} \` 
 
 • **{    __Toplam Erkek Kaydı =  \` ${erkek} \` Toplam Kız Kaydı= \` ${kız} \`__  }**  
 `)
-.setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
+.setImage('https://cdn.discordapp.com/attachments/522469528505155584/780040427616731136/simsek.gif')
 
 
 
@@ -80,7 +86,7 @@ let embed3 = new Discord.RichEmbed()
 • **Sunucumuz şu an**  \` ${message.guild.members.size} \`** kişi **
 • **Kayıt eden:** ${message.author} \`  { ${message.author.id} }  \` 
 `)
-.setImage('https://i.pinimg.com/originals/af/80/39/af8039261a387be71514bb4c2e5e54b5.gif')
+.setImage('https://cdn.discordapp.com/attachments/522469528505155584/780040427616731136/simsek.gif')
 message.channel.send(embed3)
 
 
