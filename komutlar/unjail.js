@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json')
-exports.run = function(client, message, args) {//splashen
+exports.run = function(client, message, args) {
   let abone = message.mentions.members.first()
   let log = ayarlar.jailLOG
   let kayıtlı = ayarlar.kayıtlıROL
@@ -36,4 +36,3 @@ exports.conf = {
 exports.help = {
   name: 'unjail'
 };
-//splashen

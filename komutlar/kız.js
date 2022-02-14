@@ -3,7 +3,7 @@ const db = require('quick.db');
 const ayarlar = require('../ayarlar.json')
 
 
-exports.run = async (client, message, args) => {//splashen
+exports.run = async (client, message, args) => {
 
     let kadınROL = ayarlar.kadınROL 
     let kayıtsızROL = ayarlar.kayıtsızROL
@@ -101,4 +101,4 @@ exports.conf = {
 
 exports.help = {
   name: 'kadın'
-}//splashen
+}

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json')
-exports.run = function(client, message, args) {//splashen
+exports.run = function(client, message, args) {
   let abone = message.mentions.members.first()
   let rol = ayarlar.vipROL
   if(!message.member.hasPermission('ADMINISTRATOR')) return
@@ -23,4 +23,3 @@ exports.conf = {
 exports.help = {
   name: 'vipal'
 };
-//splashen
